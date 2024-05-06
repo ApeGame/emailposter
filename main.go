@@ -28,7 +28,7 @@ const email = `<html>
 <body style="background-color:#F2F5FA;min-width:600px;font-family: Inter,serif ">
 
   <div style="background-color: #FFFFFF;width:600px;box-sizing: border-box;padding:32px;border-radius: 30px;margin:60px auto;">
-    <img src="https://d27r9m0vtnpoa0.cloudfront.net/logo.svg"/>
+    <img src="https://d27r9m0vtnpoa0.cloudfront.net/logo.png"/>
     <img src="https://d27r9m0vtnpoa0.cloudfront.net/bg.png" style="width:100%;border-radius: 24px;margin:32px 0;">
     <div style="font-size: 28px;font-weight: 700;line-height: 30.8px;color:#1F2226">
       Your application has been approved
@@ -43,30 +43,32 @@ const email = `<html>
 
     </div>
     <div style="margin-top:32px;border-top:1px solid #E7EBF3">
-      <div style="display: flex;margin-top:13px;font-size:14px;font-weight: 400;line-height: 20px;justify-content: space-between;align-items: center;">
-        <a target="_blank" style="text-decoration: none;color:#82899A;gap:5px;display: flex;align-items: center" href="https://twitter.com/ankr">
-          <img style="width:14px;height:12px;" src="https://d27r9m0vtnpoa0.cloudfront.net/twitter.svg">
-          <span>Twitter</span>
+      <div style="margin-top:13px;font-size:0px;font-weight: 400;line-height: 20px;align-items: center;">
+        <a target="_blank" style="display:inline-block;width:33%;text-decoration: none;color:#82899A;font-size: 14px;" href="https://twitter.com/ankr">
+          <img style="width:24px;height:24px;vertical-align: middle" src="https://d27r9m0vtnpoa0.cloudfront.net/Twitter.png">
+          <span style="vertical-align: middle">Twitter</span>
         </a>
-        <a target="_blank" style="text-decoration: none;color:#82899A;gap:5px;display: flex;align-items: center" href="https://discord.ankr.com/">
-          <img style="width:16px;height:16px;" src="https://d27r9m0vtnpoa0.cloudfront.net/discord.svg">
-          <span>Discord</span>
+        <a target="_blank" style="display:inline-block;width:33%;text-align:center;text-decoration: none;color:#82899A;font-size: 14px;" href="https://discord.ankr.com/">
+          <img style="width:24px;height:24px;vertical-align: middle" src="https://d27r9m0vtnpoa0.cloudfront.net/Discord.png">
+          <span style="vertical-align: middle">Discord</span>
         </a>
-        <a target="_blank" style="text-decoration: none;color:#82899A;gap:5px;display: flex;align-items: center" href="javascript:void(0)">
-          <img style="width:16px;height:10px;" src="https://d27r9m0vtnpoa0.cloudfront.net/medium.svg">
-          <span>Medium</span>
+        <a target="_blank" style="display:inline-block;width:33%;text-align:right;text-decoration: none;color:#82899A;font-size: 14px;" href="javascript:void(0)">
+          <img style="width:24px;height:24px;vertical-align: middle" src="https://d27r9m0vtnpoa0.cloudfront.net/Medium.png">
+          <span style="vertical-align: middle">Medium</span>
         </a>
       </div>
     </div>
-    <div style="margin-top:32px;display: flex;align-items: center;justify-content: space-between;color:#82899A;font-size:14px;font-weight: 400">
-      <div>&copy; 2024 Neura All rights reserved</div>
-      <div>info@neura.com</div>
+    <div style="margin-top:32px;align-items: center;justify-content: space-between;color:#82899A;font-size:14px;font-weight: 400">
+      <div style="float: left">&copy; 2024 Neura All rights reserved</div>
+      <div style="float: right">info@neura.com</div>
     </div>
+    <div style="clear: both"></div>
 
 
   </div>
 </body>
 </html>
+
 `
 
 func main() {
@@ -116,6 +118,7 @@ func unpad(buf []byte) []byte {
 
 // decryptAES decrypts ciphertext using AES-256 in CBC mode.
 func decryptAES(cipherTextBase64 string) (string, error) {
+	os.Setenv("key", "8Q0PljL9dACq2NBCHefyKkHSwWAfHBKx")
 	key := os.Getenv("key")
 	block, err := aes.NewCipher([]byte(key))
 	if err != nil {
