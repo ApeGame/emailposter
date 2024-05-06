@@ -98,7 +98,7 @@ func main() {
 		m.SetBody("text/html", email)
 
 		// Dialer configuration
-		dialer := gomail.NewDialer("smtp.gmail.com", 587, "shicai@ankr.com", "jynbcdyvhpxjjdvg")
+		dialer := gomail.NewDialer("smtp.gmail.com", 587, os.Getenv("username"), os.Getenv("password"))
 
 		// Send email
 		if err := dialer.DialAndSend(m); err != nil {
@@ -118,7 +118,6 @@ func unpad(buf []byte) []byte {
 
 // decryptAES decrypts ciphertext using AES-256 in CBC mode.
 func decryptAES(cipherTextBase64 string) (string, error) {
-	os.Setenv("key", "8Q0PljL9dACq2NBCHefyKkHSwWAfHBKx")
 	key := os.Getenv("key")
 	block, err := aes.NewCipher([]byte(key))
 	if err != nil {
